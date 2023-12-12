@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="finalwbdvModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="activity">
+    <Key>
+      <PropertyRef Name="activity_id" />
+    </Key>
+    <Property Name="activity_id" Type="Int32" Nullable="false" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Name="activity_title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="activity_description" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="user" Relationship="Self.FK_activity_activity" FromRole="activity" ToRole="users" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="activity" Relationship="Self.FK_activity_activity" FromRole="users" ToRole="activity" />
+  </EntityType>
+  <Association Name="FK_activity_activity">
+    <End Role="users" Type="Self.user" Multiplicity="1" />
+    <End Role="activity" Type="Self.activity" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="activity">
+        <PropertyRef Name="activity_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="finalwbdvContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="activities" EntityType="Self.activity" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <AssociationSet Name="FK_activity_activity" Association="Self.FK_activity_activity">
+      <End Role="users" EntitySet="users" />
+      <End Role="activity" EntitySet="activities" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

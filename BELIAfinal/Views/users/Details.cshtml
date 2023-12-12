@@ -1,0 +1,145 @@
+﻿@model BELIAfinal.Models.user
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<style>
+    body {
+      
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Set the height of the body to 100% of the viewport height */
+        margin: 0; /* Remove default body margin */
+    }
+
+    form {
+        background-color: #6DB9EF;
+        padding: 20px;
+        border-radius: 30px;
+        margin-bottom: 20px;
+    }
+
+        form:hover {
+            background-color: skyblue;
+        }
+
+    h4 {
+        color: black;
+        padding: 10px;
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .control-label {
+        font-weight: bold;
+    }
+
+    .text-danger {
+        color: red;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    .btn-default {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+
+        .btn-default:hover {
+            background-color: #0056b3;
+        }
+
+    .back-link {
+        margin-top: 20px;
+    }
+
+    .button-wrapper {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .button-link {
+        display: inline-block;
+        background-color: #6DB9EF;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 4px;
+    }
+
+        .button-link:hover {
+            background-color: skyblue;
+        }
+</style>
+
+<div>
+    <h4>DETAILS</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.firstname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.firstname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lastname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.activity.activity_title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.activity.activity_title)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.user_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

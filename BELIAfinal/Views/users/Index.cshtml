@@ -1,0 +1,141 @@
+﻿@model IEnumerable<BELIAfinal.Models.user>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="button-wrapper">
+    @Html.ActionLink("Create New", "Create", null, new { @class = "button-link" })
+</div>
+<br />
+<style>
+    body {
+        background-image: url("https://img.freepik.com/free-vector/realistic-happy-holidays-background_23-2149191106.jpg?w=1380&t=st=1702377431~exp=1702378031~hmac=986329cf7408f69ab6cea7632eabe7f3fe5a46cbb6dd44a88c5ce2a9ed6d7536");
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Set the height of the body to 100% of the viewport height */
+        margin: 0; /* Remove default body margin */
+    }
+
+    .container {
+        width: 60%; /* Adjust the width of the container as needed */
+
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        background-color: aliceblue;
+        border: 2px solid #001B79;
+        
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #3876BF;
+        font-weight: bold;
+    }
+    a{
+        color:black;
+    }
+    .button-wrapper {
+        
+        margin-top: 20px;
+    }
+
+    .button-link {
+        display: inline-block;
+        background-color: #39A7FF;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 4px;
+        border: 2px solid #001B79;
+    }
+
+        .button-link:hover {
+            background-color: #0766AD;
+        }
+
+    tr:hover {
+        background-color: #6DB9EF;
+    }
+
+    .action-links {
+        display: flex;
+    }
+
+        .action-links a {
+            margin-right: 10px;
+            background-color: red;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+            .action-links a:hover {
+                background-color: darkred;
+            }
+</style>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.password)
+        </th>
+        <th>
+
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.activity.activity_title)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.user_id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.user_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.user_id })
+            </td>
+        </tr>
+    }
+
+</table>

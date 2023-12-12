@@ -1,0 +1,184 @@
+﻿@model BELIAfinal.Models.user
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<style>
+    body {
+        background-image: url("https://img.freepik.com/free-vector/realistic-navy-blue-glitter-background_23-2150041333.jpg?w=1380&t=st=1702381991~exp=1702382591~hmac=478fbd28b3f86d93c3c29770c2f80daa254f1fb7c37ddddc5624b4b68f2041d6");
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .container {
+        width: 60%;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        background-color: aliceblue;
+        border: 2px solid #001B79;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #3876BF;
+        font-weight: bold;
+    }
+
+    a {
+        color: white;
+    }
+
+    .button-wrapper {
+        margin-top: 20px;
+    }
+
+    .button-link {
+        display: inline-block;
+        background-color: #39A7FF;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 4px;
+        border: 2px solid #001B79;
+    }
+
+        .button-link:hover {
+            background-color: #0766AD;
+        }
+
+    tr:hover {
+        background-color: #6DB9EF;
+    }
+
+    .action-links {
+        display: flex;
+    }
+
+        .action-links a {
+            margin-right: 10px;
+            background-color: red;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+            .action-links a:hover {
+                background-color: darkred;
+            }
+
+    /* Additional styles for the delete confirmation form */
+    h3 {
+        color: white;
+        text-align: center;
+    }
+
+    hr {
+        border: 1px solid #001B79;
+    }
+
+    dl {
+        color: white;
+        font-size: 18px;
+    }
+
+    dd {
+        margin-left: 20px;
+        font-weight: bold;
+    }
+
+    .form-actions {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .btn-default {
+        background-color: #FF6347;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        border-radius: 4px;
+        border: 2px solid #001B79;
+    }
+
+        .btn-default:hover {
+            background-color: #CD5C5C;
+        }
+</style>
+
+
+
+
+
+
+
+<h3>Are you sure you want to delete this?</h3>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.firstname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.firstname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lastname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" />
+            <span>|</span>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    
+}
+    </div>
+
